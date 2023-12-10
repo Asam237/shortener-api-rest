@@ -10,15 +10,20 @@ const create = async (req: Request, res: Response) => {
   if (longUrl === null) res.status(400).json({ message: "empty !!!" });
   const createdShortener = await shortenerService.create({
     longUrl,
-    shortUrl: BASE_URL + generate(),
+    shortUrl: BASE_URL + "r/" + generate(),
   });
   await createdShortener.save();
   return res.json({ shortener: createdShortener });
 };
 
+const findAll = async (req: Request, res: Response) => {
+  const shorteners = await shortenerService.findAll();
+  return res.json({ shorteners });
+};
+
 const redirectShortener = async (req: Request, res: Response) => {
   let shortUrl = req.params.shortUrl;
-  ShortenerModel.findOne({ shortUrl: BASE_URL + shortUrl }).then(
+  ShortenerModel.findOne({ shortUrl: BASE_URL + "r/" + shortUrl }).then(
     (shortener) => {
       let url = shortener?.longUrl.toString();
       if (shortener === null)
@@ -28,4 +33,4 @@ const redirectShortener = async (req: Request, res: Response) => {
   );
 };
 
-export { create, redirectShortener };
+export { create, findAll, redirectShortener };

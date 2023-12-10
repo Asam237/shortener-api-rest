@@ -5,4 +5,8 @@ const create = async (input: ShortenerInput) => {
   return await ShortenerModel.create(input);
 };
 
-export { create };
+const findAll = async () => {
+  return await ShortenerModel.find({});
+};
+
+export { create, findAll };

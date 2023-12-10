@@ -1,0 +1,64 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Shortener RestAPI",
+    "description": "This project contains a shortener API Rest",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3010",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/shorteners/create": {
+      "post": {
+        "tags": ["Shortener"],
+        "description": "Create new shortener in system",
+        "parameters": [
+          {
+            "name": "shortener",
+            "in": "body",
+            "description": "Shortener that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Shortener"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New shortener is created",
+            "schema": {
+              "$ref": "#/definitions/Shortener"
+            }
+          }
+        }
+      }
+    },
+    "/shorteners/all": {
+      "get": {
+        "tags": ["Shortener"],
+        "summary": "Get all shorteners in system",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Shortener": {
+      "properties": {
+        "longUrl": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
