@@ -15,10 +15,11 @@
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
-    "/shorteners/create": {
+    "/shorteners": {
       "post": {
         "tags": ["Shortener"],
         "description": "Create new shortener in system",
+        "summary": "Create new shortener in system",
         "parameters": [
           {
             "name": "shortener",
@@ -38,9 +39,7 @@
             }
           }
         }
-      }
-    },
-    "/shorteners/all": {
+      },
       "get": {
         "tags": ["Shortener"],
         "summary": "Get all shorteners in system",
