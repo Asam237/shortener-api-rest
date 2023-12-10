@@ -5,4 +5,4 @@ const create = async (input: ShortenerInput) => {
   return await ShortenerModel.create(input);
 };
 
-export default { create };
+export { create };
